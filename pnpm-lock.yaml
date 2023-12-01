@@ -11,6 +11,9 @@ devDependencies:
   '@types/three':
     specifier: ^0.159.0
     version: 0.159.0
+  '@vitejs/plugin-basic-ssl':
+    specifier: ^1.0.2
+    version: 1.0.2(vite@5.0.0)
   sass:
     specifier: ^1.69.5
     version: 1.69.5
@@ -360,6 +363,15 @@ packages:
 
   /@types/webxr@0.5.10:
     resolution: {integrity: sha512-n3u5sqXQJhf1CS68mw3Wf16FQ4cRPNBBwdYLFzq3UddiADOim1Pn3Y6PBdDilz1vOJF3ybLxJ8ZEDlLIzrOQZg==}
+    dev: true
+
+  /@vitejs/plugin-basic-ssl@1.0.2(vite@5.0.0):
+    resolution: {integrity: sha512-DKHKVtpI+eA5fvObVgQ3QtTGU70CcCnedalzqmGSR050AzKZMdUzgC8KmlOneHWH8dF2hJ3wkC9+8FDVAaDRCw==}
+    engines: {node: '>=14.6.0'}
+    peerDependencies:
+      vite: ^3.0.0 || ^4.0.0 || ^5.0.0
+    dependencies:
+      vite: 5.0.0(sass@1.69.5)
     dev: true
 
   /anymatch@3.1.3:
