@@ -9,7 +9,10 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@ar-js-org/ar.js-threejs": "^0.2.0",
+    "@types/three": "^0.159.0",
     "sass": "^1.69.5",
+    "three": "^0.159.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.0"
   }
