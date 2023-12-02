@@ -8,7 +8,7 @@ import markerURL from "../assets/marker.patt?url";
 
 import { useARToolkit } from "./useARToolkit";
 
-const main = async () => {
+const main = () => {
   THREEx.ArToolkitContext.baseURL = "./";
 
   const renderer = new THREE.WebGLRenderer({
@@ -31,8 +31,11 @@ const main = async () => {
   light.position.set(0, 1, -1);
   scene.add(light);
 
-  const geo = new THREE.BoxGeometry(1, 1, 1);
-  const box = new THREE.Mesh(geo);
+  const box = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshStandardMaterial({ color: 0xe5e5e5 })
+  );
+  box.position.set(0, 0.5, 0);
   scene.add(box);
 
   const { arToolkitContext, arToolkitSource } = useARToolkit({
@@ -59,5 +62,18 @@ const main = async () => {
   });
 };
 
-main();
+let isInit = false;
+window.addEventListener("load", () => {
+  document.body.addEventListener("click", async () => {
+    if (!isInit) {
+      main();
+      isInit = true;
+    }
 
+    if (document.fullscreenElement === null) {
+      await document.body.requestFullscreen();
+    } else {
+      await document.exitFullscreen();
+    }
+  });
+});
