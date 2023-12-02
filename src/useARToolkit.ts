@@ -65,47 +65,26 @@ export const useARToolkit = ({
   }
 
   function initARContext() {
-    // create atToolkitContext
-    // arToolkitContext = new THREEx.ArToolkitContext({
-    //   cameraParametersUrl: cameraParaDatURL,
-    //   detectionMode: "mono",
-    // });
-
-    // initialize it
     arToolkitContext.init(() => {
-      // copy projection matrix to camera
       camera.projectionMatrix.copy(arToolkitContext.getProjectionMatrix());
 
       arToolkitContext.arController.orientatio = getSourceOrientation();
       arToolkitContext.arController.options.orientation =
         getSourceOrientation();
 
-      // console.log("arToolkitContext", arToolkitContext);
       window.arToolkitContext = arToolkitContext;
     });
 
-    // MARKER
-    // arMarkerControls = new THREEx.ArMarkerControls(arToolkitContext, camera, {
-    //   type: "pattern",
-    //   patternUrl: markerPatternURL,
-    //   changeMatrixMode: "cameraTransformMatrix",
-    // });
-
     scene.visible = false;
 
-    // console.log("ArMarkerControls", arMarkerControls);
     window.arMarkerControls = arMarkerControls;
   }
 
   function getSourceOrientation(): string {
-    if (
-      arToolkitSource.domElement.videoWidth >
+    return arToolkitSource.domElement.videoWidth >
       arToolkitSource.domElement.videoHeight
-    ) {
-      return "landscape";
-    } else {
-      return "portrait";
-    }
+      ? "landscape"
+      : "portrait";
   }
 
   return {
