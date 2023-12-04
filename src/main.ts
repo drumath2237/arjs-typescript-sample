@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { THREEx } from "@ar-js-org/ar.js-threejs";
 
 import "./style.scss";
 
