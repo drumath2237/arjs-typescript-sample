@@ -9,8 +9,6 @@ import markerURL from "../assets/marker.patt?url";
 import { useARToolkit } from "./useARToolkit";
 
 const main = () => {
-  THREEx.ArToolkitContext.baseURL = "./";
-
   const renderer = new THREE.WebGLRenderer({
     antialias: true,
     alpha: true,
@@ -24,11 +22,13 @@ const main = () => {
 
   const scene = new THREE.Scene();
 
-  const camera = new THREE.Camera();
+  const camera = new THREE.PerspectiveCamera(60, 640 / 480, 0.01, 20);
+  camera.position.set(1, 1.5, 1.5);
+  camera.lookAt(new THREE.Vector3(0, 0.5, 0));
   scene.add(camera);
 
   const light = new THREE.DirectionalLight(0xffffff, 1);
-  light.position.set(0, 1, -1);
+  light.position.set(2.4, 2, 5);
   scene.add(light);
 
   const box = new THREE.Mesh(
@@ -77,3 +77,5 @@ window.addEventListener("load", () => {
     }
   });
 });
+
+// main();
